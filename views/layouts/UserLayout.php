@@ -1,10 +1,4 @@
 <?php
-if ( isset($_SESSION['userSession'])!="" ) {
-  // Get logged in users detail
-  $query = $conn->query("SELECT * FROM users WHERE id=".$_SESSION['userSession']);
-  $userRow = $query->fetch_assoc();
-  extract($userRow);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

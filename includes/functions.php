@@ -19,6 +19,13 @@ function CreateSession()
     }
 }
 
+if ( isset($_SESSION['userSession'])!="" ) {
+    // Get logged in users detail
+    $query = $conn->query("SELECT * FROM users WHERE id=".$_SESSION['userSession']);
+    $userRow = $query->fetch_assoc();
+    extract($userRow);
+}
+
 function sendMail($email,$subject,$message,$name)
 {
     global $mail;
@@ -75,10 +82,12 @@ function UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $cou
     if ($conn->query("UPDATE users SET name='$name', phone='$phone', address='$address', city='$city', province='$state', country='$country' WHERE id ='$id'")) {
         $msg = "Profile Has been Updated";
         $subject = "Profile Update Notice";
-        $message = "<h3>Profile Update Notice<p>Dear $name, This is to notify you that your profile has recently been updated.</p> <p> If you did not do this please login and change your password to secure your account.</p> <p>Thanks.</p>";
+        $message = "<h3>Profile Update Notice</h3><p>Dear $name, This is to notify you that your profile has recently been updated.</p> <p> If you did not do this please login and change your password to secure your account.</p> <p>Thanks.</p>";
         notify($msg, 'success');
         sendMail($email,$subject,$message,$name);
         header('Location: ./my-profile');
     }else{
         $msg= "Error" . $conn->error;
-   
+    }
+
+}

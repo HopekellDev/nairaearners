@@ -9,8 +9,6 @@ include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
 
-create_session();
-
 $page = "activation";
 $page_title = "Account Activation";
 include "./views/layouts/UserLayout.php";

@@ -14,4 +14,4 @@ $page_title = "My profile";
 if(isset($_POST['update_profile'])){
     UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $country);
 }
-include "./views/layouts/UserL
+include "./views/layouts/UserLayout.php";
