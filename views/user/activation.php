@@ -13,6 +13,12 @@ if ($country ==null) {
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
                     <div class="card card-primary card-outline card-outline-tabs">
+                        <?php
+                        if($status === '1'){
+                            ?>
+                            <?php
+                        }else{
+                            ?>
                         <div style="padding:20px">
                             <h3 class="text-center text-muted">Activation Fee: 1000</h3>
                             <p class="text-center">Select Method of payment</p>
@@ -35,15 +41,21 @@ if ($country ==null) {
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                                    Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+                                <form>
+                                    <button type="button" class="btn btn-warning" onclick="makePayment()">Pay 1000 NGN With Flutter wave</button>
+                                </form>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card -->
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
             <script src="https://js.paystack.co/v1/inline.js"></script> 
+            <script src="https://checkout.flutterwave.com/v3.js"></script>
             <script>
                 const paymentForm = document.getElementById('paymentForm');
                 paymentForm.addEventListener("submit", payWithPaystack, false);
@@ -69,3 +81,29 @@ if ($country ==null) {
                 handler.openIframe();
                 }
             </script>
+            <script>
+                function makePayment() {
+                    FlutterwaveCheckout({
+                    public_key: "FLWPUBK_TEST-42616d4e9b3c70cce8ddaf618879d912-X",
+                    tx_ref: "<?php echo uniqid(); ?>",
+                    amount: 1000,
+                    currency: "NGN",
+                    payment_options: "card, banktransfer, ussd",
+                    redirect_url: "./activate?id=<?php echo base64_encode($id);?>&state=<?php echo base64_encode('success');?>",
+                    meta: {
+                        consumer_id: 23,
+                        consumer_mac: "92a3-912ba-1192a",
+                    },
+                    customer: {
+                        email: "rose@unsinkableship.com",
+                        phone_number: "08102909304",
+                        name: "Rose DeWitt Bukater",
+                    },
+                    customizations: {
+                        title: "Naira Earners",
+                        description: "Payment for account activation",
+                        logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+                    },
+                    });
+                }
+                </script>
