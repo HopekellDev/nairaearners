@@ -61,12 +61,9 @@ function sendMail($email,$subject,$message,$name)
 
 function notify($msg, $type)
 {
-    if($type === 'success'){
-        setcookie('notify', $msg, time()+5, '/');
-        setcookie('notify_type', $type, time()+5, '/');
-    }else{
-
-    }
+    setcookie('notify', $msg, time()+5, '/');
+    setcookie('notify_type', $type, time()+5, '/');
+    
         
 }
 
@@ -90,4 +87,42 @@ function UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $cou
         $msg= "Error" . $conn->error;
     }
 
+}
+
+function UpdatePassword($email, $id, $name, $password, $old_pass, $new_pass, $pass_confirm)
+{
+    global $conn;
+    // Check if old password is correct
+    if (password_verify($old_pass, $password))
+    {
+        // Check if new passwords mtach
+        if($new_pass == $pass_confirm) {
+            $pass = password_hash($new_pass, PASSWORD_DEFAULT);
+            if ($conn->query("UPDATE users SET password = '$pass' WHERE id ='$id'")) {
+                // Message and Notification
+                $msg = "Password Has been Updated";
+                $subject = "Password Update Notice";
+                $message = "<h3>Password Update Notice</h3><p>Dear $name, This is to notify you that your profile has recently been updated.</p> <p> If you did not do this please login and change your password to secure your account.</p> <p>Thanks.</p>";
+                notify($msg, 'success');
+                sendMail($email,$subject,$message,$name);
+                header('Location: ./my-profile');
+            }
+        }else{
+            $msg = "New passwords don't Match!";
+            notify($msg, 'error');
+            header('Location: ./my-profile');
+        }
+    }else{
+        $msg = "Old password Incrrect!";
+        notify($msg, 'error');
+        header('Location: ./my-profile');
+    }
+
+}
+
+function creditReferrer($ref){
+    global $conn;
+    if ($ref !=NULL) {
+        $conn->query("UPDATE wallets SET balance = balance+700 WHERE username ='$ref'");
+    }
 }
