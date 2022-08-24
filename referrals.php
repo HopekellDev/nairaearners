@@ -9,8 +9,6 @@ include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
 
-create_session();
-
 $page = "referrals";
 $page_title = "My downlines";
 include "./views/layouts/UserLayout.php";
