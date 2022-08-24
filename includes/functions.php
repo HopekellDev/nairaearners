@@ -126,3 +126,9 @@ function creditReferrer($ref){
         $conn->query("UPDATE wallets SET balance = balance+700 WHERE username ='$ref'");
     }
 }
+
+function allDownlines($username){
+    global $conn;
+    $result = $conn->query("SELECT * FROM users WHERE ref='$username' ORDER BY id DESC");
+    return $result;
+}
