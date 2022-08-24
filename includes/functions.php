@@ -1,4 +1,5 @@
 <?php
+$url = "http://localhost/nairaearners/";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
