@@ -55,7 +55,7 @@
         <div class="row">
           
         <div class="card-body col-md-4 col-sm-4 col-12">
-            <a href="" class="btn btn-info btn-lg btn-lock">
+            <a href="./referrals" class="btn btn-info btn-lg btn-lock">
             <svg width="100%" height="auto" version="1.1" viewBox="0 0 752 752" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <clipPath id="a">
@@ -72,7 +72,7 @@
             </a>
           </div>
           <div class="card-body col-md-4 col-sm-4 col-12">
-            <a href="" class="btn btn-success btn-lg btn-lock">
+            <a href="./withdraw" class="btn btn-success btn-lg btn-lock">
             <svg width="100%" height="auto" version="1.1" viewBox="0 0 752 752" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <clipPath id="a">
@@ -99,7 +99,7 @@
             </a>
           </div>
           <div class="card-body col-md-4 col-sm-4 col-12">
-            <a href="" class="btn btn-warning btn-lg btn-lock">
+            <a href="ads" class="btn btn-warning btn-lg btn-lock">
             <svg width="100%" height="auto" version="1.1" viewBox="0 0 752 752" xmlns="http://www.w3.org/2000/svg">
               <g fill="#ffffff">
                 <path d="m445.38 497.47h-0.058594l-4.625-0.007812c-2.4531-0.003906-4.8047-0.98047-6.5352-2.7188-1.7344-1.7344-2.7031-4.0938-2.6992-6.5469l0.09375-64.746c0.007813-5.1055 4.1484-9.2344 9.25-9.2344h0.011719l4.625 0.007812c22.949 0.03125 41.598 18.73 41.566 41.68-0.039062 22.918-18.711 41.566-41.629 41.566zm4.6562-64.281-0.066406 45.324c10.543-2.1367 18.516-11.469 18.531-22.633 0.007812-6.1758-2.3867-11.988-6.75-16.359-3.25-3.2656-7.3047-5.4336-11.715-6.332z"/>

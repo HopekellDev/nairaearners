@@ -6,8 +6,6 @@ include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
 
-create_session();
-
 $page = "withdraw";
 $page_title = "Wallet withdraw";
 include "./views/layouts/UserLayout.php";

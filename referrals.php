@@ -11,5 +11,5 @@ $app->getSetings();
 
 $page = "referrals";
 $page_title = "My downlines";
-$refs = allDownlines($username);
+
 include "./views/layouts/UserLayout.php";
