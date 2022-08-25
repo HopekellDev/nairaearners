@@ -6,6 +6,7 @@ class WebSettings {
     var $currency;
     var $currency_symbol;
     var $reg_bonus;
+    var $min_withdraw;
     function getSetings()
     {
         global $conn;
@@ -16,6 +17,7 @@ class WebSettings {
         $this->currency = $currency;
         $this->currency_symbol = $currency_symbol;
         $this->reg_bonus = $reg_bonus;
+        $this->min_withdraw = $min_withdraw;
 
 
     }

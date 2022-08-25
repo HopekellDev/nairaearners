@@ -5,7 +5,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Wallet Balance</span>
-                    <span class="info-box-number">1,410</span>
+                    <span class="info-box-number"><?php echo $app->currency_symbol . GetBalance($id);?></span>
                     <a class="text-info" href="withdraw">Withdraw now <i class="fa fa-arrow-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->
@@ -22,7 +22,7 @@
               <div class="card-body">
                 <form method="post">
                 <div class="input-group input-group-md">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" name="amount" placeholder="<?php echo $app->min_withdraw;?>" required />
                   <span class="input-group-append">
                     <button type="submin" name="withdraw" class="btn btn-info btn-flat">withdraw now!</button>
                   </span>

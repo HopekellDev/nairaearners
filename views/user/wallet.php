@@ -5,7 +5,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Wallet Balance</span>
-                    <span class="info-box-number"><?php echo $app->currency_symbol; GetBalance($id);?></span>
+                    <span class="info-box-number"><?php echo $app->currency_symbol . GetBalance($id);?></span>
                     <a class="text-info" href="withdraw">Withdraw now <i class="fa fa-arrow-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->

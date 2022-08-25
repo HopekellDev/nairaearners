@@ -149,6 +149,36 @@ function GetBalance($id){
     $result = $conn->query("SELECT * FROM wallets WHERE user_id = '$id' LIMIT 1");
     if ($result->num_rows > 0) {
         $brow = $result->fetch_assoc();
-        echo number_format($brow['balance'],0,'.',',');
+        $bal = $brow['balance'];
+        return $bal;
     }
+}
+
+function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
+    global $conn;
+    $ref = strtoupper(uniqid());
+    // Check for wallet balance
+    if ($balance < $amount) {
+        $msg = "No sufficient balance for withdrawal!";
+        notify($msg, 'error');
+        header('Location: ./withdraw');
+    }
+
+    // Check for Withdrawal Threshold
+    if ($min_withdraw > $amount) {
+        $msg = "Withdrawal Amount must be upto " . $min_withdraw . "!";
+        notify($msg, 'error');
+        header('Location: ./withdraw');
+    }
+
+    // Save Withdrawal request
+    if($conn->query("INSERT INTO withdrawals (user_id, method, amount, ref) VALUES ('$id', '$method', '$amount', '$ref')")){
+        $sql ="UPDATE wallets SET balance = balance-$amount WHERE user_id ='$id'";
+        if ($conn->query($sql)) {
+            $msg = "Withdrawal request successful!";
+            notify($msg, 'success');
+            header('Location: ./withdraw');
+        }
+    }
+
 }
