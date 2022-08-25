@@ -182,3 +182,27 @@ function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
     }
 
 }
+
+// Verified Referrals
+function VerifRef($username){
+    global $conn;
+    $result = $conn->query("SELECT * FROM users WHERE status ='1' AND ref = '$username'");
+    $active_ref = $result->num_rows;
+    return $active_ref;
+}
+
+// Unverified Referrals
+function UnverifRef($username){
+    global $conn;
+    $result = $conn->query("SELECT * FROM users WHERE status ='0' AND ref = '$username'");
+    $inactive_ref = $result->num_rows;
+    return $inactive_ref;
+}
+
+// Withdrawal Count
+function AllWithdrawals($id){
+    global $conn;
+    $result = $conn->query("SELECT * FROM withdrawals WHERE user_id='$id'");
+    $withdrawals = $result->num_rows;
+    return $withdrawals;
+}

@@ -5,7 +5,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Balance</span>
-                <span class="info-box-number"><?php echo $app->currency_symbol . number_format(12400,0,'.',',');?></span>
+                <span class="info-box-number"><?php echo $app->currency_symbol . number_format(GetBalance($id),0,'.',',');?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -18,7 +18,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Referrals</span>
-                <span class="info-box-number">410</span>
+                <span class="info-box-number"><?php echo VerifRef($username);?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -31,7 +31,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pending Referrals</span>
-                <span class="info-box-number">93,139</span>
+                <span class="info-box-number"><?php echo UnverifRef($username);?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -44,7 +44,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Withdrawals</span>
-                <span class="info-box-number">13,648</span>
+                <span class="info-box-number"><?php echo AllWithdrawals($id);?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
