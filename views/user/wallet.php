@@ -5,7 +5,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Wallet Balance</span>
-                    <span class="info-box-number">1,410</span>
+                    <span class="info-box-number"><?php echo $app->currency_symbol; GetBalance($id);?></span>
                     <a class="text-info" href="withdraw">Withdraw now <i class="fa fa-arrow-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->
@@ -31,13 +31,40 @@
                   </tr>
                   </thead>
                   <tbody>
+                  <?php
+                  $result = $conn->query("SELECT * FROM transactions WHERE user_id = '$id' ORDER BY id DESC");
+                  if ($result->num_rows > 0) {
+                    while ($trow = $result->fetch_assoc()) {
+                      extract($trow);
+                      ?>
                   <tr>
-                    <td>#H7ey778JJbKlOi9G</td>
-                    <td><?php echo $app->currency_symbol . number_format(700,0,'.',',');?></td>
-                    <td><span class="badge badge-success">Credit</span></td>
-                    <td>Success</td>
-                    <td>Aug 14, 2022</td>
+                    <td>#<?php echo $tx_ref;?></td>
+                    <td><?php echo $app->currency_symbol . number_format($amount,0,'.',',');?></td>
+                    <td>
+                      <?php
+                      if ($type =='1') {
+                       echo ' <span class="badge badge-primary">Credit</span>';
+                      }else{
+                        echo ' <span class="badge badge-info">Debit</span>';
+                      }
+                     ?>
+                    </td>
+                    <td>
+                      
+                    <?php
+                      if ($status =='1') {
+                       echo ' <span class="badge badge-success">Success</span>';
+                      }else{
+                        echo ' <span class="badge badge-warning">Pending</span>';
+                      }
+                     ?>
+                    </td>
+                    <td><?php echo date('F d, Y (g:iA)', strtotime($updated_at));?></td>
                   </tr>
+                      <?php
+                    }
+                  }
+                  ?>
                   </tbody>
                   <tfoot>
                   <tr>

@@ -5,6 +5,7 @@ class WebSettings {
     var $site_name;
     var $currency;
     var $currency_symbol;
+    var $reg_bonus;
     function getSetings()
     {
         global $conn;
@@ -14,6 +15,7 @@ class WebSettings {
         $this->site_name = $site_name;
         $this->currency = $currency;
         $this->currency_symbol = $currency_symbol;
+        $this->reg_bonus = $reg_bonus;
 
 
     }

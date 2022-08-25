@@ -1,5 +1,7 @@
 <?php
 $refs = allDownlines($username);
+$reg_bonus = $app->reg_bonus;
+CheckWallet($id,$reg_bonus);
 ?>
 <!DOCTYPE html>
 <html lang="en">

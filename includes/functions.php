@@ -133,3 +133,22 @@ function allDownlines($username){
     $result = $conn->query("SELECT * FROM users WHERE ref='$username' ORDER BY id DESC");
     return $result;
 }
+
+function CheckWallet($id,$reg_bonus){
+    global $conn;
+    $result = $conn->query("SELECT user_id FROM wallets WHERE user_id = '$id'");
+    if ($result->num_rows <= 0) {
+        $tx_ref = strtoupper(uniqid());
+        $conn->query("INSERT INTO wallets (user_id, balance) VALUES('$id','$reg_bonus')");
+        $conn->query("INSERT INTO transactions (user_id,amount,type,tx_ref,status) VALUES ('$id','$reg_bonus',1,'$tx_ref',1)");
+    }
+}
+
+function GetBalance($id){
+    global $conn;
+    $result = $conn->query("SELECT * FROM wallets WHERE user_id = '$id' LIMIT 1");
+    if ($result->num_rows > 0) {
+        $brow = $result->fetch_assoc();
+        echo number_format($brow['balance'],0,'.',',');
+    }
+}
