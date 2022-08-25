@@ -8,7 +8,7 @@ include "./includes/Classes/class.site.php";
 include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
-
+CreateSession();
 $page = "referrals";
 $page_title = "My downlines";
 

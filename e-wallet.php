@@ -9,7 +9,7 @@ include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
 
-create_session();
+CreateSession();
 
 $page = "wallet";
 $page_title = "E-Wallet";
