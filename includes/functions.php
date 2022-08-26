@@ -158,7 +158,8 @@ function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
     global $conn;
     $ref = strtoupper(uniqid());
     // Check for wallet balance
-    if ($balance < $amount) {
+    if ($balance <= $amount-1) {
+        $error = true;
         $msg = "No sufficient balance for withdrawal!";
         notify($msg, 'error');
         header('Location: ./withdraw');
@@ -166,18 +167,21 @@ function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
 
     // Check for Withdrawal Threshold
     if ($min_withdraw > $amount) {
+        $error = true;
         $msg = "Withdrawal Amount must be upto " . $min_withdraw . "!";
         notify($msg, 'error');
         header('Location: ./withdraw');
     }
 
     // Save Withdrawal request
-    if($conn->query("INSERT INTO withdrawals (user_id, method, amount, ref) VALUES ('$id', '$method', '$amount', '$ref')")){
-        $sql ="UPDATE wallets SET balance = balance-$amount WHERE user_id ='$id'";
-        if ($conn->query($sql)) {
-            $msg = "Withdrawal request successful!";
-            notify($msg, 'success');
-            header('Location: ./withdraw');
+    if(!isset($error)){
+        if($conn->query("INSERT INTO withdrawals (user_id, method, amount, ref) VALUES ('$id', '$method', '$amount', '$ref')")){
+            $sql ="UPDATE wallets SET balance = balance-$amount WHERE user_id ='$id'";
+            if ($conn->query($sql)) {
+                $msg = "Withdrawal request successful!";
+                notify($msg, 'success');
+                header('Location: ./withdraw');
+            }
         }
     }
 
