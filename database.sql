@@ -234,4 +234,10 @@ ALTER TABLE `wallets`
 --
 ALTER TABLE `withdrawals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+
+ALTER TABLE `settings` ADD `ads_fee` VARCHAR(1000) NOT NULL AFTER `min_withdraw`;
+
+CREATE TABLE `nairaearners`.`ads` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `user_id` INT(11) NOT NULL , `location` VARCHAR(255) NOT NULL , `ads` TEXT NOT NULL , `landing` TEXT NOT NULL , `status` ENUM('1','0') NOT NULL DEFAULT '0' , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , `expires_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
 COMMIT;
