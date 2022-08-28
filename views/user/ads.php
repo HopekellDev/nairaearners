@@ -83,11 +83,30 @@
                 </button>
               </div>
               <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                    <form action="" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="ads type">Ads Type (Size)</label>
+                        <select name="type" id="" class="form-control" required>
+                          <option value="">Select Ads type</option>
+                          <option value="580x400">Netboard (580x400)</option>
+                          <option value="750x200">Leaderboard (750x200)</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="landing">Ads Landing page</label>
+                        <input type="url" class="form-control" placeholder="E.G https://example.com" name="landing" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="banner">Ads Banner</label>
+                        <div class="custom-file">
+                          <input type="file" accept="image/png" class="custom-file-input" id="customFile" name="banner" required />
+                          <label class="custom-file-label" for="customFile">Choose Banner Image (Only PNG)</label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary" name="create-ad">Create AD</button>
+                      </div>
+                    </form>
               </div>
             </div>
           </div>

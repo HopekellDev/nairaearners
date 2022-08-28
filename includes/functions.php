@@ -210,3 +210,32 @@ function AllWithdrawals($id){
     $withdrawals = $result->num_rows;
     return $withdrawals;
 }
+
+// Create Adverts
+function CreateAd($id,$type, $landing, $errors, $final_file, $extensions, $file_ext,$file_tmp,$file_name,$file_size)
+{
+    global $conn;
+    $ads_id = rand(100000,999999);
+    $final_file =  time() . '_' . $file_name;
+    if(in_array($file_ext,$extensions)=== false){
+        // $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+        $msg = "extension not allowed, please choose a JPEG or PNG file.";
+        notify($msg, 'error');
+        header('Location: ./ads');
+     }
+     
+     if($file_size > 2097152){
+        // $errors[]='File size must be excately 2 MB';
+        $msg = "File size must not exceed 2 MB";
+        notify($msg, 'error');
+        header('Location: ./ads');
+     }
+     
+     if(empty($errors)==true){
+        move_uploaded_file($file_tmp,"uploads/ads/".$final_file);
+        $conn->query("INSERT INTO ads (user_id, ads_id, location, ads, landing, expires_at) VALUES ('$id', '$ads_id', '$type', '$final_file', '$landing',null)");
+        $msg = "Ads Created Successfully!";
+        notify($msg, 'success');
+        header('Location: ./ads');
+     }
+}
