@@ -4,7 +4,8 @@
                     <div class="card-header">
                         <h3 class="card-title">My Campaigns</h3>
                         <button class="btn btn-primary btn-sm" style="float:right" data-toggle="modal" data-target="#CreateAdd"><i class="fa fa-plus"></i> Create new ads</button>
-                    </div>
+                        
+                      </div>
                     <div class="card-body">
                       <?php ?>
                     <table id="example2" class="table table-bordered table-hover">

@@ -5,6 +5,8 @@
                 <h5>Pay For Advert 30 Days Duration</h5>
             </div>
             <div class="card-body">
+                <p>Amount to pay: <b></b><?php echo $app->currency_symbol.$app->ads_fee;?></p>
+                <p>ADS Duration: <b>30 Days</b></p>
                 <div class="alert alert-info">
                     <h5 class="text-center"><b>Wallet Balance: </b><?php echo $app->currency_symbol . GetBalance($id);?></h5>
                 </div>
