@@ -239,3 +239,8 @@ function CreateAd($id,$type, $landing, $errors, $final_file, $extensions, $file_
         header('Location: ./ads');
      }
 }
+
+function activateAds($id,$ads_id)
+{
+    global $conn;
+}

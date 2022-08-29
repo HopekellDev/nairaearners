@@ -8,4 +8,11 @@ $app->getSetings();
 CreateSession();
 $page = "payads";
 $page_title = "ADS SUbscription";
+if (!empty($_GET['action'])) {
+    $ad = $_GET['action'];
+}else {
+    $msg = "Access Denied: Select an AD!";
+    notify($msg, 'error');
+    header('Location: ./ads');
+}
 include "./views/layouts/UserLayout.php";
