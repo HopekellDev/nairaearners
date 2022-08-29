@@ -8,6 +8,7 @@ class WebSettings {
     var $reg_bonus;
     var $min_withdraw;
     var $ads_fee;
+    var $pstk_public_key;
     function getSetings()
     {
         global $conn;
@@ -20,6 +21,7 @@ class WebSettings {
         $this->reg_bonus = $reg_bonus;
         $this->min_withdraw = $min_withdraw;
         $this->ads_fee = $ads_fee ;
+        $this->pstk_public_key = $pstk_public_key;
 
 
     }

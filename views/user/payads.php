@@ -27,17 +27,17 @@
     e.preventDefault();
 
     let handler = PaystackPop.setup({
-        key: 'pk_test_80918e95a8c6c6b3179746faf7fd06d2031de9f0', // Replace with your public key
+        key: '<?php echo $app->pstk_public_key;?>', // Replace with your public key
         email: '<?php echo $email;?>',
         amount: <?php echo $app->ads_fee * 100;?>,
         ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         // label: "Optional string that replaces customer email"
         onClose: function(){
-        alert('Window closed.');
+        alert('Payment Canceled.');
         },
         callback: function(response){
         let message = 'Payment complete! Click OK for activation';
-        alert(message);
+        // alert(message);
         <?php
         
         ?>
