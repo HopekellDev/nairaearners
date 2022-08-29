@@ -15,4 +15,27 @@ if (!empty($_GET['action'])) {
     notify($msg, 'error');
     header('Location: ./ads');
 }
+if (isset($_GET['state']) && isset($_GET['action'])) {
+    $state = base64_decode($_GET['state']);
+    $ad = $_GET['action'];
+    if($state == 'paystack'){
+        activateAdsPS($id,$ad);
+        echo $ad;
+    }
+}
+
+if (isset($_GET['wallet']))
+{
+    if($_GET['wallet'] =='true'){
+        $bal = GetBalance($id);
+        $ad = $_GET['action'];
+        if ($bal >= $app->ads_fee) {
+            activateAdsPS($id,base64_encode($ad));
+        }else{
+            $msg = "Insufficient Funds in Wallet!";
+            notify($msg, 'error');
+            header('Location: ./payads?action=' . $ad);
+        }
+    }
+}
 include "./views/layouts/UserLayout.php";

@@ -240,7 +240,15 @@ function CreateAd($id,$type, $landing, $errors, $final_file, $extensions, $file_
      }
 }
 
-function activateAds($id,$ads_id)
+function activateAdsPS($id,$ad)
 {
     global $conn;
+    $ads = base64_decode($ad);
+    $exp  = date('Y-m-d H:i:s', time()+(86400*30));
+    if($conn->query("UPDATE ads SET status = '1', expires_at='$exp' WHERE ads_id='$ads'"))
+    {
+        $msg = "Ads " . $ad ." Activated Successfully!";
+        notify($msg, 'success');
+        header('Location: ./ads');
+    }
 }

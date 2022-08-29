@@ -237,7 +237,7 @@ if (isset($_COOKIE['notify'])) {
   $msg = $_COOKIE['notify'];
   ?>
 <script>
-  toastr.<?php echo $type;?>('<?php echo $msg;?>.')
+  toastr.<?php echo $type;?>('<?php echo $msg;?>')
 </script>
   <?php
 }

@@ -39,9 +39,9 @@
         let message = 'Payment complete! Click OK for activation';
         alert(message);
         <?php
-        activateAds($id,$ads_id);
+        
         ?>
-        // window.location.href="activate?id=<?php echo base64_encode($id);?>&state=<?php echo base64_encode('success');?>";
+        window.location.href="payads?action=<?php echo base64_encode($ad);?>&state=<?php echo base64_encode('paystack');?>";
         }
     });
 
