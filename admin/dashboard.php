@@ -14,3 +14,4 @@ CreateSession();
 $page = "dashboard";
 $page_title = "Admin Dashboard";
 include "../user/views/layouts/AdminLayout.php";
+
