@@ -2,6 +2,12 @@
 $refs = allDownlines($username);
 $reg_bonus = $app->reg_bonus;
 CheckWallet($id,$reg_bonus);
+if($user_role == 'user')
+
+// Prevent None Admins
+{
+  header("Location: ../user/");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +108,7 @@ CheckWallet($id,$reg_bonus);
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link <?php if($page ==="user" || $page ==="admins" || $page ==="active_users" || $page ==="inactive_users" ){echo'active';} ?>">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 User Mannagement
@@ -110,20 +116,20 @@ CheckWallet($id,$reg_bonus);
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="active-users" class="nav-link">
+              <li class="nav-item ">
+                <a href="active-users" class="nav-link  <?php if($page ==="active_users" ){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Active Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="admins" class="nav-link">
+                <a href="admins" class="nav-link  <?php if($page ==="admins" ){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Admins</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="inactive-users" class="nav-link">
+                <a href="inactive-users" class="nav-link  <?php if($page ==="inactive_users" ){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Inactive Users</p>
                 </a>
@@ -135,7 +141,7 @@ CheckWallet($id,$reg_bonus);
               <i class="nav-icon fa fa-money-bill"></i>
               <p>
                 Withdrawals
-                <span class="right badge badge-danger"><?php echo $refs->num_rows;?></span>
+                <span class="right badge badge-danger"><?php echo pendingWitdrawals();?></span>
               </p>
             </a>
           </li>

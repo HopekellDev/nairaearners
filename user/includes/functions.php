@@ -274,6 +274,54 @@ function activateAdsPS($id,$ad)
     return $count;
  }
 
+ Function removeAdmin($user, $action)
+ {
+     global $conn;
+     $admin_id = $user;
+     if ($conn->query("UPDATE users SET user_role='user' WHERE id ='$admin_id'")) {
+         $msg = "User Role Changed to 'USER'!";
+         notify($msg, 'success');
+         header('Location: ./user?id=' . base64_encode($user));
+     }
+ }
+ 
+ Function makeAdmin($user, $action)
+ {
+     global $conn;
+     $admin_id = $user;
+     if ($conn->query("UPDATE users SET user_role='admin' WHERE id ='$admin_id'")) {
+
+         $msg = "User Role Changed to 'USER'!";
+         notify($msg, 'success');
+         header('Location: ./user?id=' . base64_encode($user));
+     }
+ }
+
+ Function unblockUser($user, $action)
+ {
+    global $conn;
+    $admin_id = $user;
+    if ($conn->query("UPDATE users SET email_verify='1' WHERE id ='$admin_id'")) {
+
+        $msg = "User Activated!";
+        notify($msg, 'success');
+        header('Location: ./user?id=' . base64_encode($user));
+    }
+ }
+ Function blockUser($user, $action)
+ {
+     global $conn;
+     $admin_id = $user;
+     if ($conn->query("UPDATE users SET email_verify='0' WHERE id ='$admin_id'")) {
+
+         $msg = "User Blocked";
+         notify($msg, 'success');
+         header('Location: ./user?id=' . base64_encode($user));
+     }
+ }
+
+
+
 //  Witdrawals
 
 Function withdrawCount()
