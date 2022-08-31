@@ -252,3 +252,51 @@ function activateAdsPS($id,$ad)
         header('Location: ./ads');
     }
 }
+
+
+
+
+# Admin Functions Start
+
+// Users
+ Function activeUsers()
+ {
+    global $conn;
+    $result =$conn->query("SELECT id FROM users WHERE status = '1' AND user_role='user'");
+    $count = $result->num_rows;
+    return $count;
+ }
+ Function inactiveUsers()
+ {
+    global $conn;
+    $result =$conn->query("SELECT id FROM users WHERE status = '0' AND user_role='user'");
+    $count = $result->num_rows;
+    return $count;
+ }
+
+//  Witdrawals
+
+Function withdrawCount()
+{
+    global $conn;
+    $result = $conn->query("SELECT * FROM withdrawals");
+    $count = $result->num_rows;
+    return $count;
+}
+
+Function pendingWitdrawals()
+{
+    global $conn;
+    $result = $conn->query("SELECT * FROM withdrawals WHERE status='0'");
+    $count = $result->num_rows;
+    return $count;
+}
+
+// Advertisments
+
+Function allAds(){
+    global $conn;
+    $result = $conn->query("SELECT id FROM ads");
+    $count = $result->num_rows;
+    return $count;
+}

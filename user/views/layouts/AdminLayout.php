@@ -102,37 +102,79 @@ CheckWallet($id,$reg_bonus);
             </a>
           </li>
           <li class="nav-item">
-            <a href="./e-wallet" class="nav-link <?php if($page ==="wallet"){echo'active';} ?>">
-              <i class="nav-icon fas fa-wallet"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                Wallet
+                User Mannagement
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="active-users" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Active Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="admins" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Admins</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="inactive-users" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Inactive Users</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="./withdraw" class="nav-link <?php if($page ==="withdraw"){echo'active';} ?>">
+            <a href="./withdrawals" class="nav-link <?php if($page ==="withdraw"){echo'active';} ?>">
               <i class="nav-icon fa fa-money-bill"></i>
               <p>
-                Withdrawal
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="./referrals" class="nav-link <?php if($page ==="referrals"){echo'active';} ?>">
-              <i class="nav-icon fa fa-link"></i>
-              <p>
-                Referrals
+                Withdrawals
                 <span class="right badge badge-danger"><?php echo $refs->num_rows;?></span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="./my-profile" class="nav-link <?php if($page ==="profile"){echo'active';} ?>">
-              <i class="nav-icon fas fa-user"></i>
+            <a href="./ads" class="nav-link <?php if($page ==="ads"){echo'active';} ?>">
+              <i class="nav-icon fa fa-bullhorn"></i>
               <p>
-                My Profile
+                Ads Management
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>
+                Settings
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="general-settings" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>General settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="email-settings" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Email settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="front-settings" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Frontend settings</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="./logout" class="nav-link">
