@@ -205,13 +205,6 @@ CheckWallet($id,$reg_bonus);
 <script src="./assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="./assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="./assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="./assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="./assets/plugins/jszip/jszip.min.js"></script>
-<script src="./assets/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="./assets/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="./assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="./assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="./assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- Toastr -->
 <script src="./assets/plugins/toastr/toastr.min.js"></script>
 <script>
