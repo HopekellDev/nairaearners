@@ -8,7 +8,7 @@
                                     <h1>Make Your Business More Profitable</h1>
                                     <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.</p>
                                     <div>
-                                        <a href="#" class="btn btn-primary mr-2 mb-2">Get Started</a>
+                                        <a href="./user/signup" class="btn btn-primary mr-2 mb-2">Get Started</a>
                                     </div>
                                 </div>
                             </div>
