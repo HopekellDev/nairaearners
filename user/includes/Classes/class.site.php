@@ -24,3 +24,22 @@ class WebSettings {
 
     }
 }
+
+
+class SMTPSettings
+{
+    function getSettings()
+    {
+        global $conn;
+        $mail_seetings = $conn->query("SELECT * FROM mail_settings WHERE id = 1");
+        $mail = $mail_seetings->fetch_assoc();
+        extract($mail);
+        $this->smtp_host = $smtp_host;
+        $this->smtp_port = $smtp_port;
+        $this->encryption = $encryption;
+        $this->smtp_user = $smtp_user;
+        $this->smtp_pass = $smtp_pass;
+        $this->smtp_email = $smtp_email;
+        $this->smtp_from = $smtp_from;
+    }
+}

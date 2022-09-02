@@ -53,10 +53,13 @@ function sendMail($email,$subject,$message,$name)
         $mail->AltBody = $message;
     
         $mail->send();
-        echo 'Message has been sent';
+        $msg = 'Message has been sent '.$email;
+        return $msg;
     } catch (Exception $e) {
-        $error = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $msg = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        return $msg;
     }
+    
 }
 
 
@@ -391,8 +394,40 @@ Function saveGeneral()
     $pstk_publick_key = $_POST['pstk_publick_key'];
     $date = date("Y-m-d H:i:s");
     if ($conn->query("UPDATE settings SET site_name = '$site_name', site_url = '$site_url', site_email = '$site_email', site_phone = '$site_phone', seo_title = '$seo_title', site_description = '$site_description', currency = '$site_currency', currency_symbol = '$site_currency_symbol', reg_bonus = '$reg_bonus', min_withdraw = '$min_withdraw', ads_fee = '$ads_fee', pstk_public_key = '$pstk_publick_key', date_updated ='$date' WHERE id=1")) {
-        $msg = "Settinge Updated";
+        $msg = "Settings Updated";
         notify($msg, 'success');
         header('Location: ./general-settings');
     }
+}
+
+Function saveEmail()
+{
+    global $conn;
+    $smtp_host  =   $_POST['smtp_host'];
+    $smtp_port  =   $_POST['smtp_port'];
+    $encryption     =   $_POST['encryption'];
+    $smtp_user  =   $_POST['smtp_user'];
+    $smtp_password  =   $_POST['smtp_password'];
+    $smtp_from_email    =   $_POST['smtp_from_email'];
+    $smtp_from_name     =   $_POST['smtp_from_name'];
+
+    if($conn->query("UPDATE mail_settings SET smtp_host = '$smtp_host', smtp_port = '$smtp_port', encryption = '$encryption', smtp_user = '$smtp_user', smtp_pass = '$smtp_password', smtp_email = '$smtp_from_email', smtp_from = '$smtp_from_name'"))
+    {
+        $msg = "Settings Updated";
+        notify($msg, 'success');
+        header('Location: ./email-settings');
+    }
+}
+
+Function testSMTP()
+{
+    global $conn;
+    $email = $_POST['email'];
+    $subject = "Test SMTP Email";
+    $message = "This is a test email. Your Email Configuration is working";
+    $name ="Admin";
+    $msg = sendMail($email,$subject,$message,$name);
+
+    notify($msg, 'info');
+    header('Location: ./email-settings');
 }

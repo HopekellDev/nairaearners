@@ -9,9 +9,17 @@ include "../user/includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
 
+// Email Settings
+$mailSend = new SMTPSettings();
+$mailSend->getSettings();
+
 CreateSession();
-if (isset($_POST['email'])) {
-    saveGeneral();
+if (isset($_POST['_email'])) {
+    saveEmail();
+}
+
+if (isset($_POST['send_email'])) {
+    testSMTP();
 }
 $page = "email";
 $page_title = "Email Setting";
