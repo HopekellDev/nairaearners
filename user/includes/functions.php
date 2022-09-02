@@ -340,6 +340,27 @@ Function pendingWitdrawals()
     return $count;
 }
 
+Function withdrawApprove($ref)
+{
+    global $conn;
+    if ($conn->query("UPDATE withdrawals SET status ='1' WHERE ref='$ref'")) {
+        $msg = "Withdrawal Approved";
+        notify($msg, 'success');
+        header('Location: ./trx?ref=' . $ref);
+    }
+}
+
+Function declineApprove($ref,$user_id,$amount)
+{
+    global $conn;
+    if ($conn->query("UPDATE withdrawals SET status ='2' WHERE ref='$ref'")) {
+        $conn->query("UPDATE wallets SET balance=balance+$amount WHERE user_id='$user_id'");
+        $msg = "Withdrawal Declined";
+        notify($msg, 'success');
+        header('Location: ./trx?ref=' . $ref);
+    }
+}
+
 // Advertisments
 
 Function allAds(){
