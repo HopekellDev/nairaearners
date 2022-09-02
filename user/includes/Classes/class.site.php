@@ -2,13 +2,6 @@
 include "./includes/db.php";
 
 class WebSettings {
-    var $site_name;
-    var $currency;
-    var $currency_symbol;
-    var $reg_bonus;
-    var $min_withdraw;
-    var $ads_fee;
-    var $pstk_public_key;
     function getSetings()
     {
         global $conn;
@@ -22,6 +15,11 @@ class WebSettings {
         $this->min_withdraw = $min_withdraw;
         $this->ads_fee = $ads_fee ;
         $this->pstk_public_key = $pstk_public_key;
+        $this->site_url = $site_url;
+        $this->site_email=$site_email;
+        $this->site_phone=$site_phone;
+        $this->seo_title=$seo_title;
+        $this->site_description=$site_description;
 
 
     }

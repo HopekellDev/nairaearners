@@ -154,7 +154,7 @@ if($user_role == 'user')
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link <?php if($page ==="general" || $page ==="email" || $page ==="frontend"){echo'active';} ?>">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Settings
@@ -163,19 +163,19 @@ if($user_role == 'user')
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="general-settings" class="nav-link">
+                <a href="general-settings" class="nav-link <?php if($page ==="general"){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>General settings</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="email-settings" class="nav-link">
+                <a href="email-settings" class="nav-link <?php if($page ==="email"){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Email settings</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="front-settings" class="nav-link">
+                <a href="front-settings" class="nav-link <?php if($page ==="frontend"){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Frontend settings</p>
                 </a>

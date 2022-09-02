@@ -369,3 +369,30 @@ Function allAds(){
     $count = $result->num_rows;
     return $count;
 }
+
+
+
+// Settings
+
+Function saveGeneral()
+{
+    global $conn;
+    $site_name = $_POST['site_name'];
+    $site_url = $_POST['site_url'];
+    $site_email = $_POST['site_email'];
+    $site_phone = $_POST['site_phone'];
+    $seo_title = $_POST['seo_title'];
+    $site_description = $_POST['site_description'];
+    $site_currency = $_POST['site_currency'];
+    $site_currency_symbol = $_POST['site_currency_symbol'];
+    $reg_bonus = $_POST['reg_bonus'];
+    $min_withdraw = $_POST['min_withdraw'];
+    $ads_fee = $_POST['ads_fee'];
+    $pstk_publick_key = $_POST['pstk_publick_key'];
+    $date = date("Y-m-d H:i:s");
+    if ($conn->query("UPDATE settings SET site_name = '$site_name', site_url = '$site_url', site_email = '$site_email', site_phone = '$site_phone', seo_title = '$seo_title', site_description = '$site_description', currency = '$site_currency', currency_symbol = '$site_currency_symbol', reg_bonus = '$reg_bonus', min_withdraw = '$min_withdraw', ads_fee = '$ads_fee', pstk_public_key = '$pstk_publick_key', date_updated ='$date' WHERE id=1")) {
+        $msg = "Settinge Updated";
+        notify($msg, 'success');
+        header('Location: ./general-settings');
+    }
+}
