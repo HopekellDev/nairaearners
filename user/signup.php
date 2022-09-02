@@ -4,7 +4,7 @@ include "./includes/Classes/class.site.php";
 include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
-$url = "http://localhost/nairaearners";
+$url = $app->site_url;
 $page_title = "Signup";
 $page ="register";
 if (isset($_POST['signup'])) {
