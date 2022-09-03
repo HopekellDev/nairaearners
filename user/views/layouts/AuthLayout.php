@@ -1,5 +1,6 @@
 <?php
 
+$url = $app->site_url;
 ?>
 
 <!DOCTYPE html>

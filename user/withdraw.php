@@ -7,7 +7,7 @@ $app = new WebSettings();
 $app->getSetings();
 CreateSession();
 if (isset($_POST['withdraw'])) {
-    $method ="";
+    $method = $_POST['method'];
     $balance = GetBalance($id);
     $amount = $_POST['amount'];
     $min_withdraw =$app->min_withdraw;

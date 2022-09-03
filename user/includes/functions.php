@@ -1,5 +1,4 @@
 <?php
-$url = "http://localhost/nairaearners/";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -69,6 +68,11 @@ function notify($msg, $type)
     setcookie('notify_type', $type, time()+5, '/');
     
         
+}
+
+Function CreateWallet($id)
+{
+    global $conn;
 }
 
 function UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $country)
@@ -172,6 +176,34 @@ function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
     if ($min_withdraw > $amount) {
         $error = true;
         $msg = "Withdrawal Amount must be upto " . $min_withdraw . "!";
+        notify($msg, 'error');
+        header('Location: ./withdraw');
+    }
+    // Check Withdrawall Methods
+
+    #Bank
+    $result = $conn->query("SELECT * FROM bank_accounts WHERE user_id ='$id'");
+    if($result->num_rows == 0){
+        $error = true;
+        $msg = "Please Update you bank details";
+        notify($msg, 'error');
+        header('Location: ./withdraw');
+    }
+
+    #Crypto
+    $result = $conn->query("SELECT * FROM crypto_wallets WHERE user_id = '$id'");
+    $wal= $result->fetch_assoc();
+    #Check USDT
+    if ($wal['usdt'] == null) {
+        $error = true;
+        $msg = "Please Update your USDT-Bep20 Wallet";
+        notify($msg, 'error');
+        header('Location: ./withdraw');
+    }
+    #Check BUSD
+    if ($wal['busd'] == null) {
+        $error = true;
+        $msg = "Please Update your BUSD-Bep20 Wallet";
         notify($msg, 'error');
         header('Location: ./withdraw');
     }

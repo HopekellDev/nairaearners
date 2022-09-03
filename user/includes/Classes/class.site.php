@@ -19,7 +19,10 @@ class WebSettings {
         $this->site_email=$site_email;
         $this->site_phone=$site_phone;
         $this->seo_title=$seo_title;
-        $this->site_description=$site_description;
+        $this->site_description = $site_description;
+        $this->bank_details = $bank_details;
+        $this->usdt_wallet = $usdt_wallet;
+        $this->busd_wallet = $busd_wallet;
 
 
     }

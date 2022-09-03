@@ -52,6 +52,12 @@ if ($country ==null) {
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Flutterwave</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#bank-payment" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Bank Transfer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#crypto-payment" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Crypto Payment</a>
+                            </li>
                             </ul>
                         </div>
                         <div class="card-body">
@@ -65,6 +71,54 @@ if ($country ==null) {
                                 <form>
                                     <button type="button" class="btn btn-warning" onclick="makePayment()">Pay 1000 NGN With Flutter wave</button>
                                 </form>
+                                </div>
+                                <div class="tab-pane fade" id="bank-payment" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                                    <h6 class="text-muted text-center">Pay to below bank details and send prove to our whatsapp channel</h6>
+                                    <?php if($app->bank_details != null){ ?>
+                                    <div style="width: 98%; margin:auto; border:solid thin #bbb; background:#ddd; padding:20px; border-radius: 5px">
+                                        <?php echo $app->bank_details;?>
+                                    </div>
+                                    <br>
+                                    <center><a target="blank" href="https://wa.me/%2B2348100739036?text=I%20%20want%20to%20activate%20my%20account%20y%20username%20is%3A%20<?php echo $username;?>%20and%20my%20payment%20proof%20follows." class="btn btn-success btn-sm text-center"><i class="fab fa-whatsapp"></i> Send Proof on Whatsapp</a></center>
+                                    <?php }?>
+                                </div> 
+                                <div class="tab-pane fade" id="crypto-payment" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                                    <h6 class="text-muted text-center">Send Crypto to below wallets and send prove to our whatsapp channel</h6>
+                                    <?php 
+                                    if ($app->usdt_wallet != null) {
+                                       ?>
+                                    <div style="padding: 10px; border:solid thin teal; margin-bottom:20px;">
+                                       <label for="" class="text-info"><b>USDT-Bep20</b></label>
+                                       <div class="input-group input-group-md">
+                                        <input type="text" class="form-control" id="usdtWallet" value="<?php echo $app->usdt_wallet;?>" readonly />
+                                        <span class="input-group-append">
+                                            <button type="button" class="btn btn-info btn-flat" onclick="copyUsdt()" onmouseout="outFunc()">
+                                                <span class="tooltiptext" id="usdtTooltip">Copy Address</span>
+                                            </button>
+                                        </span>
+                                        </div>
+                                    </div>
+                                       <?php
+                                    }
+                                    ?>
+                                    <?php 
+                                    if ($app->busd_wallet != null) {
+                                       ?>
+                                    <div style="padding: 10px; border:solid thin teal; margin-bottom:20px;">
+                                       <label for="" class="text-info"><b>BUSD-Bep20</b></label>
+                                       <div class="input-group input-group-md">
+                                        <input type="text" class="form-control" id="busdWallet" value="<?php echo $app->busd_wallet;?>" readonly />
+                                        <span class="input-group-append">
+                                            <button type="button" class="btn btn-info btn-flat" onclick="copyBusd()" onmouseout="outFunc()">
+                                                <span class="tooltiptext" id="busdTooltip">Copy Address</span>
+                                            </button>
+                                        </span>
+                                        </div>
+                                    </div>
+                                       <?php
+                                    }
+                                    ?>
+                                    <center><a target="blank" href="https://wa.me/%2B2348100739036?text=I%20%20want%20to%20activate%20my%20account%20y%20username%20is%3A%20<?php echo $username;?>%20and%20my%20payment%20proof%20follows." class="btn btn-success btn-sm text-center"><i class="fab fa-whatsapp"></i> Send Proof on Whatsapp</a></center>
                                 </div>
                             </div>
                         </div>
@@ -128,3 +182,40 @@ if ($country ==null) {
                     });
                 }
                 </script>
+
+
+
+<script>
+function copyUsdt() {
+  var copyText = document.getElementById("usdtWallet");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  
+  var tooltip = document.getElementById("usdtTooltip");
+  tooltip.innerHTML = "Wallet Copied";
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("usdtTooltip");
+  tooltip.innerHTML = "Copy Address";
+}
+</script>
+
+
+<script>
+function copyBusd() {
+  var copyText = document.getElementById("busdWallet");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  
+  var tooltip = document.getElementById("busdTooltip");
+  tooltip.innerHTML = "Wallet Copied";
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("busdTooltip");
+  tooltip.innerHTML = "Copy Address";
+}
+</script>

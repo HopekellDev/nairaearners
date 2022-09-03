@@ -1,7 +1,10 @@
 <?php
+// Create Crypto wallet on First Login
+CreateWallet($id);
 $refs = allDownlines($username);
 $reg_bonus = $app->reg_bonus;
 CheckWallet($id,$reg_bonus);
+$url = $app->site_url;
 ?>
 <!DOCTYPE html>
 <html lang="en">

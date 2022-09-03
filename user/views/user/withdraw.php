@@ -22,6 +22,14 @@
               <div class="card-body">
                 <form method="post">
                 <div class="input-group input-group-md">
+                  <div class="input-group-prepend">
+                    <select name="method" id="" class="form-control rounded-0" required>
+                      <option value="">Select Method</option>
+                      <option value="Bank">Bank</option>
+                      <option value="USDT">USDT-Bep20</option>
+                      <option value="BUSD">BUSD-Bep20</option>
+                    </select>
+                  </div>
                   <input type="text" class="form-control" name="amount" placeholder="<?php echo $app->min_withdraw;?>" required />
                   <span class="input-group-append">
                     <button type="submin" name="withdraw" class="btn btn-info btn-flat">withdraw now!</button>
