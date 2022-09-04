@@ -38,7 +38,7 @@ $url = $app->site_url;
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <?php if($user_role === "admin")
+      <?php if($user_role !== "user")
       {
         ?>
         <li class="nav-item d-none d-sm-inline-block btn-secondary text-white">

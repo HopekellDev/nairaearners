@@ -80,7 +80,7 @@
                     <h3 class="card-title">Latest Users</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover table-responsive">
                             <?php
                             $result = $conn->query("SELECT * FROM users WHERE user_role='user' ORDER BY id DESC LIMIT 8");
                             ?>
