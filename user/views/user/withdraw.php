@@ -76,11 +76,13 @@
                       <td>
                         
                       <?php
-                        if ($status =='1') {
-                        echo ' <span class="badge badge-success">Success</span>';
-                        }else{
-                          echo ' <span class="badge badge-warning">Pending</span>';
-                        }
+                      if ($status == "0") {
+                          echo '<i class="badge badge-warning">Pending</i>';
+                      }elseif ($status == "1") {
+                          echo '<i class="badge badge-success">Approved</i>';
+                      }elseif ($status =="2") {
+                          echo '<i class="badge badge-danger">Rejected</i>';
+                      }
                       ?>
                       </td>
                       <td><?php echo date('F d, Y (g:iA)', strtotime($updated_at));?></td>

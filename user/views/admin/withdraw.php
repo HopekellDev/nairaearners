@@ -79,7 +79,17 @@
                                 <td><?php echo $name;?></td>
                                 <td><?php echo $amount;?></td>
                                 <td><?php echo $method;?></td>
-                                <td><i class="badge badge-warning">Pending</i></td>
+                                <td>
+                                    <?php
+                                    if ($status == "0") {
+                                        echo '<i class="badge badge-warning">Pending</i>';
+                                    }elseif ($status == "1") {
+                                        echo '<i class="badge badge-success">Approved</i>';
+                                    }elseif ($status =="2") {
+                                        echo '<i class="badge badge-danger">Rejected</i>';
+                                    }
+                                    ?>
+                                </td>
                                 <td><?php echo date('F d, Y / g:iA', strtotime($created_at));?></td>
                                 <td><a href="trx?ref=<?php echo $ref;?>" class="btn btn-primary btn-sm btn-block">View Request</a></td>
                             </tr>

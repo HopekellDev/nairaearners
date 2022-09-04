@@ -24,18 +24,41 @@
                 <p><b>Withdrawal Info:</b></p>
                 <?php 
                 $user_id = $trx['user_id'];
-                $result=$conn->query("SELECT * FROM bank_accounts WHERE user_id='$user_id'");
-                if($result->num_rows > 0)
+                if($trx['method']=='Bank')
                 {
-                    $bank = $result->fetch_assoc();
-                    extract($bank);
-                    ?>
-                <div class="alert alert-info">
-                    <p><b>Bank name: </b><?php echo $bank_name;?></p>
-                    <p><b>Account Name: </b><?php echo $beneficiary;?></p>
-                    <p><b>Account Number: </b><?php echo $account_number;?></p>
-                </div>
-                    <?php
+                    $result=$conn->query("SELECT * FROM bank_accounts WHERE user_id='$user_id'");
+                    if($result->num_rows > 0)
+                    {
+                        $bank = $result->fetch_assoc();
+                        extract($bank);
+                        ?>
+                    <div class="alert alert-info">
+                        <p><b>Bank name: </b><?php echo $bank_name;?></p>
+                        <p><b>Account Name: </b><?php echo $beneficiary;?></p>
+                        <p><b>Account Number: </b><?php echo $account_number;?></p>
+                    </div>
+                        <?php
+                    }
+                }else{
+                    $result=$conn->query("SELECT * FROM crypto_wallets WHERE user_id='$user_id'");
+                    if($result->num_rows > 0)
+                    {
+                        $bank = $result->fetch_assoc();
+                        extract($bank);
+                        ?>
+                    <div class="alert alert-secondary">
+                        <p><b>Method </b><?php echo $trx['method'];?></p>
+                        <p><b>Address: </b>
+                        <?php 
+                        if ($trx['method'] =="USDT") {
+                            echo $usdt;
+                        }else{
+                            echo $busd;
+                        }
+                        ?></p>
+                    </div>
+                        <?php
+                    }
                 }
                 ?>
                 <hr>
