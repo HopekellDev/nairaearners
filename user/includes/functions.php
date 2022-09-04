@@ -73,6 +73,10 @@ function notify($msg, $type)
 Function CreateWallet($id)
 {
     global $conn;
+    $result = $conn->query("SELECT * FROM crypto_wallets WHERE user_id ='$id'");
+    if ($result->num_rows < 1) {
+       $conn->query("INSERT INTO crypto_wallets (user_id) VALUES ('$id')");
+    }
 }
 
 function UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $country)
@@ -161,9 +165,13 @@ function GetBalance($id){
     }
 }
 
-function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
+function MakeWithdraw($id,$min_withdraw, $balance)
+{
     global $conn;
+    $method = $_POST['method'];
+    $amount = $_POST['amount'];
     $ref = strtoupper(uniqid());
+
     // Check for wallet balance
     if ($balance <= $amount-1) {
         $error = true;
@@ -194,14 +202,14 @@ function MakeWithdraw($id, $amount, $min_withdraw, $balance,$method){
     $result = $conn->query("SELECT * FROM crypto_wallets WHERE user_id = '$id'");
     $wal= $result->fetch_assoc();
     #Check USDT
-    if ($wal['usdt'] == null) {
+    if ($method =='USDT' && $wal['usdt'] == null) {
         $error = true;
         $msg = "Please Update your USDT-Bep20 Wallet";
         notify($msg, 'error');
         header('Location: ./withdraw');
     }
     #Check BUSD
-    if ($wal['busd'] == null) {
+    if ($method =='BUSD' && $wal['busd'] == null) {
         $error = true;
         $msg = "Please Update your BUSD-Bep20 Wallet";
         notify($msg, 'error');

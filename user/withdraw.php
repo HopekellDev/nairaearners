@@ -7,11 +7,10 @@ $app = new WebSettings();
 $app->getSetings();
 CreateSession();
 if (isset($_POST['withdraw'])) {
-    $method = $_POST['method'];
+    
     $balance = GetBalance($id);
-    $amount = $_POST['amount'];
     $min_withdraw =$app->min_withdraw;
-    MakeWithdraw($id, $amount, $min_withdraw, $balance,$method);
+    MakeWithdraw($id,$min_withdraw, $balance);
 }
 $page = "withdraw";
 $page_title = "Wallet withdraw";

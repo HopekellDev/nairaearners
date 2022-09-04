@@ -71,7 +71,7 @@
                       <td>#<?php echo $ref;?></td>
                       <td><?php echo $app->currency_symbol . number_format($amount,0,'.',',');?></td>
                       <td>
-                        <?php $method; ?>
+                        <?php echo $method; ?>
                       </td>
                       <td>
                         
