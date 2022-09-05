@@ -210,6 +210,8 @@ $url = $app->site_url;
 <script src="./assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <!-- Toastr -->
 <script src="./assets/plugins/toastr/toastr.min.js"></script>
+<!-- Custom File Input -->
+<script src="../user/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -226,6 +228,11 @@ $url = $app->site_url;
       "responsive": true,
     });
   });
+</script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
 </script>
 <?php
 if (isset($_COOKIE['notify'])) {
