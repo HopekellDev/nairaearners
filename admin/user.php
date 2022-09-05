@@ -44,6 +44,10 @@ if (isset($_GET['id']) && isset($_GET['activate'])) {
     $action = true;
     unblockUser($this_id, $action);
 }
+
+if (isset($_GET['activate_acct'])) {
+    ActivateUser();
+}
 $page = "user";
 $page_title = "User: " . $row['name'];
 include "../user/views/layouts/AdminLayout.php";

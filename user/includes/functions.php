@@ -328,6 +328,17 @@ function activateAdsPS($id,$ad)
      }
  }
  
+ Function ActivateUser()
+ {
+    global $conn;
+    $id = base64_decode($_GET['id']);
+    $conn->query("UPDATE users SET status ='1' WHERE id = '$id'");
+    $msg =  "User Activated";
+    notify($msg, 'success');
+    header('Location: ./user?id=' . base64_encode($id));
+ }
+
+
  Function makeAdmin($user, $action)
  {
      global $conn;

@@ -50,7 +50,11 @@
                    echo  '<a href="?id='.$_GET['id'].'&activate=true" class="btn btn-success btn-block"><b>Unblock user</b></a>';
                  }
                 ?>
-                
+                <?php
+                  if ($row['status'] =='0') {
+                    echo  '<a href="?id='.$_GET['id'].'&activate_acct=true" class="btn btn-primary btn-block"><b>Activate Account</b></a>';
+                  }
+                ?>
                 
               </div>
               <!-- /.card-body -->
