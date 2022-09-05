@@ -55,7 +55,7 @@ Class FrontEnd
     {
         global $conn;
 
-        $frontend = $conn->query("SELECT * FROM frontend WHERE id=1 Limit 1");
+        $frontend = $conn->query("SELECT * FROM frontend WHERE id= 1 Limit 1");
         $row = $frontend->fetch_assoc();
         extract($row);
         $this->logo = $logo;

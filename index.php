@@ -13,7 +13,7 @@ include "./includes/functions.php";
 $app = new WebSettings();
 $app->getSetings();
 $front = new FrontEnd();
-$front->getFrontEnd();
+$front->GetFrontEnd();
 $url = $app->site_url;
 
 include "./views/layouts/FrontLayout.php";

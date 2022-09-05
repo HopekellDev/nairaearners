@@ -34,7 +34,7 @@
                                 <?php
                                 if($front->logo=='default'){echo'<a href="./" class="text-black h2 mb-0">'.$app->site_name.'<span class="text-primary">.</span> </a>';}else{
                                     ?>
-                                <img src ="<?php echo $front->logo;?>" height="80px"/>
+                                <img src ="./assets/images/<?php echo $front->logo;?>" height="80px"/>
                                     <?php
                                 }
                                 ?>
@@ -47,7 +47,6 @@
                                     <li><a href="#features-section" class="nav-link">How it works</a></li>
                                     <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
                                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                                    <li><a href="./user/login" class="btn btn btn-primary">Login</a></li>
                                 </ul>
                             </nav>
                         </div>
