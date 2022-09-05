@@ -471,3 +471,37 @@ Function testSMTP()
     notify($msg, 'info');
     header('Location: ./email-settings');
 }
+
+Function UploadLogo()
+{
+    global $conn;
+    $folder="../assets/images/";
+    $temp_file = explode(".", $_FILES["logo"]["name"]);
+	$logo = round(microtime(true)) . '.' . end($temp_file);
+	$file_loc = $_FILES['logo']['tmp_name'];
+	$new_file_name = strtolower(md5($logo));
+	$final_file=str_replace(' ','-',$new_file_name) . '.png';
+    if (move_uploaded_file($file_loc,$folder.$final_file)) {
+        $conn->query("UPDATE frontend SET logo ='$final_file'");
+        $msg = "Logo Uploaded";
+        notify($msg, 'success');
+        header('Location: ./front-settings');
+    }
+}
+
+Function UploadIcon()
+{
+    global $conn;
+    $folder="../assets/images/";
+    $temp_file = explode(".", $_FILES["icon"]["name"]);
+	$icon = round(microtime(true)) . '.' . end($temp_file);
+	$file_loc = $_FILES['icon']['tmp_name'];
+	$new_file_name = strtolower(md5($icon));
+	$final_file=str_replace(' ','-',$new_file_name) . 'png';
+    if (move_uploaded_file($file_loc,$folder.$final_file)) {
+        $conn->query("UPDATE frontend SET icon ='$final_file'");
+        $msg = "Logo Uploaded";
+        notify($msg, 'success');
+        header('Location: ./front-settings');
+    }
+}

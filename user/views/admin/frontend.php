@@ -8,24 +8,23 @@
                 <div class="row">
                     <div class="col-md-12">
                         <?php if ($front->logo !='default') {
-                                echo '<img src="'. $front->logo .'" width="100%" />';
+                                echo '<img src="../assets/images/'. $front->logo .'" height="60px%" />';
                             }
                         ?>
                     </div>
                     <div class="col-md-12">
                         <form action="" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="logo" required>
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button type='submit' name="_logo" class="btn btn-outline-info">Upload Logo</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                            </div>
-                        </div>
                         </form>
                     </div>
                 </div>
@@ -41,12 +40,24 @@
                 <div class="row">
                     <div class="col-3">
                         <?php if ($front->icon != 'default') {
-                            echo '<img src="' . $front->icon .' " width="100%" />';
+                            echo '<img src="../assets/images/' . $front->icon .' " width="100%" />';
                         }
                         ?>
                     </div>
                     <div class="col-9">
-                        <form action="" method="post" enctype="multipart/form-data"></form>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="icon" required>
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button type='submit' name="_icon" class="btn btn-outline-info">Upload Favicon</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

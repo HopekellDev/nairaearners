@@ -18,6 +18,15 @@ $front->GetFrontEnd();
 
 CreateSession();
 
+// Upload Logo
+if (isset($_POST['_logo'])) {
+    UploadLogo();
+}
+
+// Upload Favicon
+if (isset($_POST['_icon'])) {
+    UploadIcon();
+}
 $page = "frontend";
 $page_title = "Frontend Setting";
 include "../user/views/layouts/AdminLayout.php";
