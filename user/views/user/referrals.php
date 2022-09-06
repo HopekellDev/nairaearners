@@ -107,7 +107,7 @@
                                         } ?>" alt="<?php echo $ref['username']; ?>" width="100%">
                 </div>
                 <hr>
-                <h5 class="text-muted text-center"><?php echo $name; ?> </h5>
+                <h5 class="text-muted text-center"><?php echo $ref['name']; ?> </h5>
 
                 <?php
                         if ($ref['status'] == '1') {

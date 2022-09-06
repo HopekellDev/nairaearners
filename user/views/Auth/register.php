@@ -1,5 +1,6 @@
 <div class="card-body register-card-body" style="padding-bottom:20px">
-      <p class="login-box-msg">Register a new membership</p>
+      <h4 class="login-box-msg">Welcome to <?php echo $app->site_name;?></h4>
+      <?php if(isset($_COOKIE['REF_USER'])){ echo '<p class="text-center text-success"> You were referred by '. $_COOKIE['REF_USER'] . '</p>'; }?>
 
       <form action="" method="post"20px;">
       <?php
