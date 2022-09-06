@@ -15,6 +15,7 @@ class WebSettings {
         $this->min_withdraw = $min_withdraw;
         $this->ads_fee = $ads_fee ;
         $this->pstk_public_key = $pstk_public_key;
+        $this->flw_public_key = $flw_public_key;
         $this->site_url = $site_url;
         $this->site_email=$site_email;
         $this->site_phone=$site_phone;

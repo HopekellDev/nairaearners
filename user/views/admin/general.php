@@ -57,6 +57,10 @@
                             <label for="site_name">Paystack Public Key</label>
                             <input type="text" name="pstk_publick_key" required class="form-control" value="<?php echo $app->pstk_public_key;?>">
                         </div>
+                        <div class="col-md-4 form-group">
+                            <label for="site_name">Flutterwave Public Key</label>
+                            <input type="text" name="flw_publick_key" required class="form-control" value="<?php echo $app->flw_public_key;?>">
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="general" class="col-md-4 btn btn-primary btn-block">Save Setting</button>

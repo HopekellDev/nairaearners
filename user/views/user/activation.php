@@ -159,7 +159,7 @@ if ($country ==null) {
             <script>
                 function makePayment() {
                     FlutterwaveCheckout({
-                    public_key: "FLWPUBK_TEST-42616d4e9b3c70cce8ddaf618879d912-X",
+                    public_key: "<?php echo $app->flw_public_key;?>",
                     tx_ref: "<?php echo uniqid(); ?>",
                     amount: 1000,
                     currency: "NGN",
