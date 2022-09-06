@@ -77,6 +77,10 @@ Function CreateWallet($id)
     if ($result->num_rows < 1) {
        $conn->query("INSERT INTO crypto_wallets (user_id) VALUES ('$id')");
     }
+    $result = $conn->query("SELECT * FROM bank_accounts WHERE user_id ='$id'");
+    if ($result->num_rows < 1) {
+       $conn->query("INSERT INTO bank_accounts (user_id) VALUES ('$id')");
+    }
 }
 
 function UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $country)
@@ -99,6 +103,34 @@ function UpdateProfile($email, $id, $name, $phone, $address, $city, $state, $cou
         $msg= "Error" . $conn->error;
     }
 
+}
+
+// Upadte Withdrawal Metthods
+Function updateCrypto($id)
+{
+    global $conn;
+    $usdt = $_POST['usdt'];
+    $busd = $_POST['busd'];
+    if($conn->query("UPDATE crypto_wallets SET busd = '$busd', usdt ='$usdt' WHERE user_id='$id'"))
+    {
+        $msg = "Crypto Wallets Updated";
+        notify($msg, 'success');
+        header('Location: ./my-profile');
+    }
+}
+
+Function updateBank($id)
+{
+    global $conn;
+    $bank = $_POST['bank'];
+    $benficiary = $_POST['beneficiary'];
+    $nuban = $_POST['nuban'];
+    if ($conn->query("UPDATE bank_accounts SET bank_name='$bank', beneficiary='$benficiary', account_number='$nuban' WHERE user_id='$id'")) 
+    {
+        $msg = "Bank account Updated";
+        notify($msg, 'success');
+        header('Location: ./my-profile');
+    }
 }
 
 function UpdatePassword($email, $id, $name, $password, $old_pass, $new_pass, $pass_confirm)
@@ -328,11 +360,12 @@ function activateAdsPS($id,$ad)
      }
  }
  
- Function ActivateUser()
+ Function ActivateUser($iref)
  {
     global $conn;
     $id = base64_decode($_GET['id']);
     $conn->query("UPDATE users SET status ='1' WHERE id = '$id'");
+    $conn->query("UPDATE wallets SET balance = balance + 700 WHERE user_id = '$iref'");
     $msg =  "User Activated";
     notify($msg, 'success');
     header('Location: ./user?id=' . base64_encode($id));

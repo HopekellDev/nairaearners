@@ -21,4 +21,10 @@ if (isset($_POST['update_pass'])) {
     $pass_confirm = $_POST['repass'];
     UpdatePassword($email, $id, $name, $password, $old_pass, $new_pass, $pass_confirm);
 }
+if (isset($_POST['update_crypto'])) {
+    updateCrypto($id);
+}
+if (isset($_POST['update_bank'])) {
+    updateBank($id);
+}
 include "./views/layouts/UserLayout.php";
