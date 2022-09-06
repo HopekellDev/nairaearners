@@ -46,7 +46,14 @@ if (isset($_GET['id']) && isset($_GET['activate'])) {
 }
 
 if (isset($_GET['activate_acct'])) {
-    ActivateUser();
+    $ref = $row['ref'];
+    $result = $conn->query("SELECT u.*, w.* FROM users u, wallets w WHERE u.username = '$ref' AND u.id=w.user_id");
+    if ($result->num_rows > 0) {
+        echo 'We are having a change';
+        $this_ref = $result->fetch_assoc();
+        $iref = $this_ref['user_id'];
+    }
+    ActivateUser($iref);
 }
 $page = "user";
 $page_title = "User: " . $row['name'];
