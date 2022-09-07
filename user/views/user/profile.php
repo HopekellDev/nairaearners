@@ -5,7 +5,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="./assets/dist/img/user4-128x128.jpg"
+                            <img class="profile-user-img img-fluid img-circle" src="<?php if ($avatar!=null) { echo './uploads/user/' . $avatar;}else { echo './assets/dist/img/avatar.png';} ?>"
                                 alt="User profile picture">
                         </div>
 
@@ -25,7 +25,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="btn btn-primary btn-block" role="button"><b>Update Photo</b></a>
+                        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default"><b>Update Photo</b></a>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -217,3 +217,35 @@
             <!-- /.col -->
         </div>
         <!-- /.row -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Upload Photo</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" action="" >
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="photo" accept="image/*" required>
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <button type='submit' name="upload_photo" class="btn btn-outline-info">Upload Photo</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
