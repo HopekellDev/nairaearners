@@ -535,6 +535,19 @@ Function testSMTP()
     header('Location: ./email-settings');
 }
 
+Function CreateCountry()
+{
+    global $conn;
+    $country_name   = $_POST['country_name'];
+    $currency_code  = $_POST['currency_code'];
+    $currency_symbol    = $_POST['currency_symbol'];
+    
+    $conn->query("INSERT INTO countries (country_name, country_currency, country_symbol) VALUES ('$country_name', '$currency_code', '$currency_symbol')");
+    $msg = "Country Created";
+    notify($msg, 'success');
+    header('Location: ./country-settings');
+}
+
 Function UploadLogo()
 {
     global $conn;
