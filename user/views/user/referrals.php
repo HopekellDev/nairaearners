@@ -48,11 +48,7 @@
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
-                <div class="img-circle"><img src="<?php if ($avatar != null) {
-                                                        echo $avatar;
-                                                    } else {
-                                                        echo './assets/dist/img/avatar.png';
-                                                    } ?>" alt="<?php echo $username; ?>" width="100%"></div>
+                <div class="img-circle"><img src="<?php if ($avatar!=null) { echo './uploads/user/' . $avatar;}else { echo './assets/dist/img/avatar.png';} ?>" alt="<?php echo $username; ?>" width="100%"></div>
                 <hr>
                 <h5 class="text-muted text-center"><?php echo $name; ?></h5>
             </div>
@@ -100,11 +96,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="img-circle">
-                    <img src="<?php if ($ref['avatar'] != null) {
-                                            echo $ref['avatar'];
-                                        } else {
-                                            echo './assets/dist/img/avatar.png';
-                                        } ?>" alt="<?php echo $ref['username']; ?>" width="100%">
+                    <img src="<?php if ($ref['avatar']!=null) { echo './uploads/user/' . $ref['avatar'];}else { echo './assets/dist/img/avatar.png';} ?>" alt="<?php echo $ref['username']; ?>" width="100%">
                 </div>
                 <hr>
                 <h5 class="text-muted text-center"><?php echo $ref['name']; ?> </h5>

@@ -182,8 +182,11 @@ Function uploadPhoto($id)
 
 }
 
-function creditReferrer($ref){
+function creditReferrer($ref,$id){
     global $conn;
+    $result = $conn->query("SELECT * FROM users WHERE id='$id'");
+    $user = $result->fetch_assoc();
+    extract($user);
     if ($ref !=NULL) {
         $conn->query("UPDATE wallets SET balance = balance+700 WHERE username ='$ref'");
     }

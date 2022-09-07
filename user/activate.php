@@ -14,7 +14,7 @@ if (!empty($_GET['id']) && !empty($_GET['state']) ) {
         if ($conn->query("UPDATE users SET status = '1' WHERE id = '$id'")) {
 
             // If has referrer, Credit Referer
-            creditReferrer($ref);
+            creditReferrer($ref,$id);
 
             // Message and Notification
             $msg = "Your account have been activated";

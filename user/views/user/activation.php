@@ -138,9 +138,9 @@ if ($country ==null) {
                 e.preventDefault();
 
                 let handler = PaystackPop.setup({
-                    key: '<?php echo $app->ads_fee * 100;?>', // Replace with your public key
+                    key: '<?php echo $app->pstk_public_key;?>', // Replace with your public key
                     email: '<?php echo $email;?>',
-                    amount: 1000 * 100,
+                    amount: <?php echo $app->ads_fee * 100;?>,
                     ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
                     // label: "Optional string that replaces customer email"
                     onClose: function(){
@@ -157,31 +157,31 @@ if ($country ==null) {
                 }
             </script>
             <script>
-                function makePayment() {
-                    FlutterwaveCheckout({
-                    public_key: "<?php echo $app->flw_public_key;?>",
-                    tx_ref: "<?php echo uniqid(); ?>",
-                    amount: 1000,
-                    currency: "NGN",
-                    payment_options: "card, banktransfer, ussd",
-                    redirect_url: "./activate?id=<?php echo base64_encode($id);?>&state=<?php echo base64_encode('success');?>",
-                    meta: {
-                        consumer_id: 23,
-                        consumer_mac: "92a3-912ba-1192a",
-                    },
-                    customer: {
-                        email: "rose@unsinkableship.com",
-                        phone_number: "08102909304",
-                        name: "Rose DeWitt Bukater",
-                    },
-                    customizations: {
-                        title: "Naira Earners",
-                        description: "Payment for account activation",
-                        logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
-                    },
-                    });
-                }
-                </script>
+              function makePayment() {
+                FlutterwaveCheckout({
+                  public_key: "<?php echo $app->flw_public_key;?>",
+                  tx_ref: "<?php echo uniqid();?>",
+                  amount: <?php echo $app->ads_fee;?>,
+                  currency: "NGN",
+                  payment_options: "card, banktransfer, ussd",
+                  redirect_url: "./activate?id=<?php echo base64_encode($id);?>&state=<?php echo base64_encode('success');?>",
+                  meta: {
+                    consumer_id: 23,
+                    consumer_mac: "92a3-912ba-1192a",
+                  },
+                  customer: {
+                    email: "<?php echo $email;?>",
+                    phone_number: "08102909304",
+                    name: "Rose DeWitt Bukater",
+                  },
+                  customizations: {
+                    title: "<?php echo $app->site_name;?>",
+                    description: "Payment for Account Activation",
+                    logo: "<?php echo $app->site_url . '/images/' . $front->icon;?>.png",
+                  },
+                });
+              }
+            </script>
 
 
 
