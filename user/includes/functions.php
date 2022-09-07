@@ -164,6 +164,24 @@ function UpdatePassword($email, $id, $name, $password, $old_pass, $new_pass, $pa
 
 }
 
+Function uploadPhoto($id)
+{
+    global $conn;
+    $folder="./uploads/user/";
+    $temp_file = explode(".", $_FILES["photo"]["name"]);
+	$photo = round(microtime(true)) . '.' . end($temp_file);
+	$file_loc = $_FILES['photo']['tmp_name'];
+	$new_file_name = strtolower(md5($photo));
+	$final_file=str_replace(' ','-',$new_file_name) . '.png';
+    if (move_uploaded_file($file_loc,$folder.$final_file)) {
+        $conn->query("UPDATE users SET avatar ='$final_file' WHERE id ='$id'");
+        $msg = "Pofile photo updated";
+        notify($msg, 'success');
+        header('Location: ./my-profile');
+    }
+
+}
+
 function creditReferrer($ref){
     global $conn;
     if ($ref !=NULL) {

@@ -89,7 +89,7 @@ if($user_role == 'user')
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php if ($avatar!=null) { echo $avatar;}else { echo '../user/assets/dist/img/avatar.png';} ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php if ($avatar!=null) { echo '../user/uploads/user/' . $avatar;}else { echo './assets/dist/img/avatar.png';} ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $name;?></a>
@@ -154,7 +154,7 @@ if($user_role == 'user')
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link <?php if($page ==="general" || $page ==="email" || $page ==="frontend"){echo'active';} ?>">
+            <a href="#" class="nav-link <?php if($page ==="general" || $page ==="country" || $page ==="email" || $page ==="frontend"){echo'active';} ?>">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Settings
@@ -178,6 +178,12 @@ if($user_role == 'user')
                 <a href="front-settings" class="nav-link <?php if($page ==="frontend"){echo'active';} ?>">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Frontend settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="country-settings" class="nav-link <?php if($page ==="country"){echo'active';} ?>">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Country settings</p>
                 </a>
               </li>
             </ul>

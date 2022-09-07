@@ -27,4 +27,8 @@ if (isset($_POST['update_crypto'])) {
 if (isset($_POST['update_bank'])) {
     updateBank($id);
 }
+
+if (isset($_POST['upload_photo'])) {
+    uploadPhoto($id);
+}
 include "./views/layouts/UserLayout.php";
