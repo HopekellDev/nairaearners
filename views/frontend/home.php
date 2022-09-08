@@ -139,6 +139,54 @@
                     </div>
                 </div>
             </div>
+            <div class="site-section bg-image1 overlay" id="faq-section" style="background-image: url(images/xhero_1.jpg.pagespeed.ic.gJFuw7JSw0.jpg);">
+                <div class="container">
+                    <div class="row mb-5">
+                        <div class="col-12 text-center">
+                            <h2 class="section-title mb-3 text-white">Frequently Asked Questions</h2>
+                        </div>
+                        <hr />
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Accordion Item #1
+                                </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Accordion Item #3
+                                </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
             <div class="site-section bg-image2 overlay" id="contact-section" style="background-image: url(images/xhero_1.jpg.pagespeed.ic.gJFuw7JSw0.jpg);">
                 <div class="container">
                     <div class="row mb-5">
@@ -147,43 +195,23 @@
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-lg-7 mb-5">
-                            <form action="#" class="p-5 bg-white">
-                                <h2 class="h4 text-black mb-5">Contact Form</h2>
-                                <div class="row form-group">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <label class="text-black" for="fname">First Name</label>
-                                        <input type="text" id="fname" class="form-control rounded-0" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="text-black" for="lname">Last Name</label>
-                                        <input type="text" id="lname" class="form-control rounded-0" />
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="text-black" for="email">Email</label>
-                                        <input type="email" id="email" class="form-control rounded-0" />
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="text-black" for="subject">Subject</label>
-                                        <input type="subject" id="subject" class="form-control rounded-0" />
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="text-black" for="message">Message</label>
-                                        <textarea name="message" id="message" cols="30" rows="7" class="form-control rounded-0" placeholder="Leave your message here..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <input type="submit" value="Send Message" class="btn btn-primary mr-2 mb-2" />
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="col-md-4">
+                            <div class="card card-body">
+                                <h5><i class="fa fa-map-marker"></i> Address:</h5>
+                                <p>Somewhere behind the rainbow</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-body">
+                            <h5><i class="fa fa-phone"></i> Phone:</h5>
+                                <p>Somewhere behind the rainbow</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-body">
+                            <h5><i class="fa fa-envelope"></i> Email:</h5>
+                                <p>Somewhere behind the rainbow</p>
+                            </div>
                         </div>
                     </div>
                 </div>
