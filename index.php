@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Set Referral Var.
 if(isset($_GET['ref']))
 {

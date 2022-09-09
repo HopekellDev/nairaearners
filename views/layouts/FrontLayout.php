@@ -9,8 +9,8 @@
             rel="stylesheet"
             href="./assets/A.fonts%2C%2C_icomoon%2C%2C_style.css%20css%2C%2C_bootstrap.min.css%20css%2C%2C_jquery-ui.css%20css%2C%2C_owl.carousel.min.css%20css%2C%2C_owl.theme.default.min.css%20css%2C%2C_owl.theme.default.min.css%20css%2C%2C_jquery.fancybox.min.css.css"
         />
+        <script src="https://kit.fontawesome.com/a9233b233c.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     </head>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
         <div id="overlayer"></div>

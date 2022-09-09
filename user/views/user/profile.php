@@ -128,6 +128,7 @@
                                 <div class="col-md-6">
                                   <h3>Bank Account</h3>
                                   <?php
+                                  $user = $userRow['id'];
                                   $result = $conn->query("SELECT * FROM bank_accounts WHERE user_id ='$id'");
                                   $bank = $result->fetch_assoc();
                                   extract($bank);
@@ -135,15 +136,15 @@
                                   <form action="" method="post">
                                     <div class="form-group">
                                       <label for="">Bank Name</label>
-                                      <input type="text" class="form-control" name="bank" value="<?php echo $bank_name;?>" required>
+                                      <input type="text" class="form-control" name="bank" value="<?php echo $bank['bank_name'];?>" required>
                                     </div>
                                     <div class="form-group">
                                       <label for="">Account Name</label>
-                                      <input type="text" class="form-control" name="beneficiary" value="<?php echo $beneficiary;?>" required>
+                                      <input type="text" class="form-control" name="beneficiary" value="<?php echo $bank['beneficiary'];?>" required>
                                     </div>
                                     <div class="form-group">
                                       <label for="">Account Number</label>
-                                      <input type="tel" class="form-control" name="nuban" value="<?php echo $account_number;?>" required>
+                                      <input type="tel" class="form-control" name="nuban" value="<?php echo $bank['account_number'];?>" required>
                                     </div>
                                     <div class="form-group">
                                       <button type="submit" class="btn btn-success btn-block" name="update_bank">Update Bank Details</button>
@@ -160,11 +161,11 @@
                                   <form action="" method="post">
                                     <div class="form-group">
                                       <label for="">USDT Bep-20</label>
-                                      <input type="text" class="form-control" value="<?php echo $usdt;?>" name="usdt" placeholder="Enetr USDT wallet Address">
+                                      <input type="text" class="form-control" value="<?php echo $crypto['usdt'];?>" name="usdt" placeholder="Enetr USDT wallet Address">
                                     </div>
                                     <div class="form-group">
                                       <label for="">BUSD Bep-20</label>
-                                      <input type="text" class="form-control" value="<?php echo $busd;?>" name="busd" placeholder="Enetr BUSD wallet Address">
+                                      <input type="text" class="form-control" value="<?php echo $crypto['busd'];?>" name="busd" placeholder="Enetr BUSD wallet Address">
                                     </div>
                                     <div class="form-group">
                                       <button type="submit" class="btn btn-warning btn-block" name="update_crypto">Update Crypto wallets</button>

@@ -182,14 +182,19 @@ Function uploadPhoto($id)
 
 }
 
-function creditReferrer($ref,$id){
+function creditReferrer($ref){
     global $conn;
-    $result = $conn->query("SELECT * FROM users WHERE id='$id'");
+    $result = $conn->query("SELECT * FROM users WHERE id='$ref'");
     $user = $result->fetch_assoc();
-    extract($user);
-    if ($ref !=NULL) {
-        $conn->query("UPDATE wallets SET balance = balance+700 WHERE username ='$ref'");
-    }
+    $referer = $user['ref'];
+    $conn->query("UPDATE wallets SET balance = balance+700 WHERE id ='$referer'");
+    // Message and Notification
+    $msg = "Your account have been activated";
+    // $subject = "Account Activation Notice!";
+    // $message = "<h3>Account Activation Notice!</h3><p>Dear $name, This is to notify you that your Account have been activated andyou can now start earning when you refer family and friends.</p>";
+    notify($msg, 'success');
+    // sendMail($email,$subject,$message,$name);
+    header('Location: ./account-activation');
 }
 
 function allDownlines($username){
